@@ -3,8 +3,9 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$/../EU">
       <excludeFolder url="file://$MODULE_DIR$/../EU/.venv" />
+      <excludeFolder url="file://$MODULE_DIR$/../EU/.venv_eu" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.14 (PythonProject2)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.14 (.venv_eu)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>
