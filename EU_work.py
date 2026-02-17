@@ -83,7 +83,7 @@ country = st.selectbox("Choose a country", sorted(panel_a["country"].unique()))
 
 r = panel_a.loc[panel_a["country"] == country].iloc[0]
 
-# Show the 3-level result
+# Show the 3-level result 1
 st.subheader(r["status_label"])
 
 # Show metrics
