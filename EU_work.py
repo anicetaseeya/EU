@@ -2,7 +2,7 @@
 import pandas as pd
 import numpy as np
 
-FILEPATH = r"C:\Users\Nasty\Downloads\fv4m5n.xlsx"
+FILEPATH = "fv4m5n.xlsx"
 
 # ----------------------------
 # 1) Load Panel A from Figure 3.13 (your file structure)
