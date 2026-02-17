@@ -73,27 +73,24 @@ def print_result(r: pd.Series):
 # Build a sorted list of countries
 countries = sorted(panel_a["country"].dropna().astype(str).unique().tolist())
 
-while True:
-    print("\nSelect a country (type number). Type 0 to exit.\n")
+import streamlit as st
 
-    for i, name in enumerate(countries, start=1):
-        print(f"{i:>3}. {name}")
+st.set_page_config(page_title="EU Grid Interconnection Upside", layout="centered")
+st.title("EU Grid Interconnection Upside")
 
-    choice = input("\nYour choice #: ").strip()
+# Dropdown
+country = st.selectbox("Choose a country", sorted(panel_a["country"].unique()))
 
-    if not choice.isdigit():
-        print("Please type a number.")
-        continue
+r = panel_a.loc[panel_a["country"] == country].iloc[0]
 
-    choice = int(choice)
+# Show the 3-level result
+st.subheader(r["status_label"])
 
-    if choice == 0:
-        break
+# Show metrics
+col1, col2, col3 = st.columns(3)
+col1.metric("Interconnectivity", f"{r['interconnectivity_pct']:.1f}%")
+col2.metric("Gap to 15% target", f"{r['interconnection_gap_pctpt']:.1f} pp")
+col3.metric("Upside index", f"{r['integration_potential_index']:.2f}")
 
-    if not (1 <= choice <= len(countries)):
-        print("Number out of range.")
-        continue
-
-    selected_country = countries[choice - 1]
-    r = panel_a.loc[panel_a["country"] == selected_country].iloc[0]
-    print_result(r)
+# Optional narrative text
+st.write(r["ui_message"])
